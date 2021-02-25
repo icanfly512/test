@@ -1,3 +1,50 @@
-test2
-http://archive.ics.uci.edu/ml/machine-learning-databases/census-income-mld/census-income.data.gz
-https://github.com/icanfly512/test.git
+Create table if not exists data_test_table(
+AAGE int,
+income int)
+row format delimited
+fields terminated by ','
+lines terminated by '\n';
+
+
+
+Count the number of rows with missing values in columns 26-28 (inclusive).
+
+Select count(*) from data_table where migmtr1 rlike '\\?' and MIGMTR3 rlike '\\?' and MIGMTR4 rlike '\\?'; 99696
+
+Select count(*) from data_table where migmtr1 = ' ?' and MIGMTR3 = ' ?' and MIGMTR4 = ' ?';
+
+
+#Select count(*) from data_table where migmtr1 = '\\?' and MIGMTR3 = '\\?' and MIGMTR4 = '\\?';
+
+Select count(*) from data_table where migmtr1 rlike '\\?';
+
+Select count(*) from data_table where AAGE=73;?
+
+
+
+INSERT OVERWRITE LOCAL DIRECTORY '/tmp/income_female' ROW FORMAT DELIMITED FIELDS TERMINATED BY ',' SELECT * FROM data_table WHERE ASEX = ' Female';
+
+capital and space 'female' --> ' Female'
+
+
+
+
+Select avg(AAGE) as average_age from data_table; 
+Select min(AAGE) as min_age from data_table; 
+Select max(AAGE) as max_age from data_table; 
+select percentile(cast(AAGE as BIGINT), 0.5) from data_table;
+
+select AHGA, count(*) as num from data_table group by AHGA;
+
+
+
+
+
+
+
+
+
+
+
+
+
